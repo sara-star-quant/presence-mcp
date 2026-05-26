@@ -1,0 +1,73 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "presence-mcp"
+dynamic = ["version"]
+description = "Launcher that exposes the presence Claude Code plugin's MCP server to any MCP-aware client."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.12"
+authors = [
+  { name = "Sara Star Quant LLC" },
+]
+keywords = ["mcp", "claude", "claude-code", "presence", "telemetry"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Software Development",
+]
+
+[project.urls]
+Homepage = "https://github.com/sara-star-quant/presence-mcp"
+Issues = "https://github.com/sara-star-quant/presence-mcp/issues"
+"Upstream (presence)" = "https://github.com/sara-star-quant/presence"
+
+[project.scripts]
+presence-mcp = "presence_mcp.launcher:main"
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3",
+  "ruff>=0.15",
+]
+
+[tool.hatch.version]
+path = "src/presence_mcp/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/presence_mcp"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "src/presence_mcp",
+  "tests",
+  "README.md",
+  "LICENSE",
+  "server.json",
+  "pyproject.toml",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "S", "RET", "SIM", "PL"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/presence_mcp/launcher.py" = ["S603"]  # subprocess call is the launcher's entire purpose
+"tests/*" = ["S101", "PLR2004"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["-ra", "--strict-markers", "--strict-config"]
