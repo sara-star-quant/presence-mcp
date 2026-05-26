@@ -46,6 +46,17 @@ jobs:
           pip install -e ".[dev]" jsonschema
       - name: Check versions are in sync
         run: python scripts/check_versions.py
+      - name: Check README contains the MCP Registry verification marker
+        run: |
+          set -eu
+          name=$(python -c "import json; print(json.load(open('server.json'))['name'])")
+          marker="<!-- mcp-name: ${name} -->"
+          if ! grep -q -F "${marker}" README.md; then
+            echo "README.md is missing the registry verification marker: ${marker}" >&2
+            echo "The registry verifier reads the PyPI long description and requires this exact string." >&2
+            exit 1
+          fi
+          echo "OK: README.md contains marker for ${name}"
       - name: Validate server.json against the registry schema
         env:
           SERVER_JSON: server.json
