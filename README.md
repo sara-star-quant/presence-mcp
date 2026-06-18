@@ -4,7 +4,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/presence-mcp.svg)](https://pypi.org/project/presence-mcp/)
 [![Python versions](https://img.shields.io/pypi/pyversions/presence-mcp.svg)](https://pypi.org/project/presence-mcp/)
-[![License: MIT](https://img.shields.io/pypi/l/presence-mcp.svg)](./LICENSE)
+[![License: Apache 2.0](https://img.shields.io/pypi/l/presence-mcp.svg)](./LICENSE)
 [![CI](https://github.com/sara-star-quant/presence-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/sara-star-quant/presence-mcp/actions/workflows/ci.yml)
 [![MCP Registry](https://img.shields.io/badge/MCP%20Registry-active-2ea44f)](https://registry.modelcontextprotocol.io/v0/servers?search=presence-mcp)
 
@@ -134,4 +134,4 @@ presence's MCP server advertises `serverInfo.name = "presence-mcp"` in its `init
 
 ## License
 
-MIT. See [LICENSE](./LICENSE).
+Apache-2.0. See [LICENSE](./LICENSE) and [NOTICE](./NOTICE).
