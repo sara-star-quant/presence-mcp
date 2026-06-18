@@ -4,6 +4,16 @@ All notable changes to `presence-mcp` are documented here. The format follows [K
 
 ## [Unreleased]
 
+## [0.2.0]
+
+Relicense from MIT to Apache-2.0 to match the `presence` plugin it launches. Apache-2.0 is permissive and OSI-approved (existing usage rights unchanged) and adds an explicit patent grant.
+
+### Changed
+
+- `LICENSE` replaced with the Apache-2.0 text; added `NOTICE`.
+- License updated in `pyproject.toml` (metadata + classifier), `README.md`, and `server.json`.
+- No runtime behavior change.
+
 ## [0.1.0]
 
 Initial release. Thin launcher that locates a local [presence](https://github.com/sara-star-quant/presence) install and forwards stdio to `python lib/cli.py mcp`, so the presence MCP server can be listed in the official MCP Registry at https://github.com/mcp.
